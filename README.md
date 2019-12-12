@@ -164,3 +164,113 @@ Incomplete layout attributes specified for tag 'amp-img'. For example, provide a
 `layout="responsive //图片自适应`
 
 
+# 四、升级实战篇
+## 1. 轮播图
+### 1.1 引入amp-carousel组件库
+```
+<script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+```
+### 1.2 
+```
+<amp-carousel layout="responsive" width="300" height="168" type="slides" loop autoplay delay="2000">
+      <amp-img src="mountains-1.jpg" width="300" height="168"  layout="responsive"></amp-img>
+      <amp-img src="mountains-2.jpg" width="300" height="168"  layout="responsive"></amp-img>
+      <amp-img src="mountains-3.jpg" width="300" height="168"  layout="responsive" ></amp-img>
+</amp-carousel>
+```
+
+## 2. 导航元素
+### 2.1 引入`<amp-slider>组件`
+`<script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+`
+### 2.2 编写`<header>`代码，含有`<amp-sidebar>元素`
+```
+<header class="headerbar">
+  <div role="button" on="tap:sidebar1.toggle" tabindex="0" class="hamburger">☰</div>
+  <div class="site-name">News Site</div>
+
+  <amp-sidebar id="sidebar1" layout="nodisplay" side="left">
+    <div role="button" aria-label="close sidebar" on="tap:sidebar1.toggle" tabindex="0" class="close-sidebar">✕</div>
+    <ul class="sidebar">
+      <li><a href="#">Example 1</a></li>
+      <li><a href="#">Example 2</a></li>
+      <li><a href="#">Example 3</a></li>
+    </ul>
+  </amp-sidebar>
+</header>
+```
+
+### 注意：ID标识符：`siderbar1`,`on`属性来操作toggle边栏
+
+## 3. 添加自定义字体,引入Roboto
+### 3.1 方法1：
+`<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto|Roboto:b">
+`
+### 3.2 方法2：
+```
+@font-face {
+font-family: 'Mic-icon';
+src: url("//crov.micstatic.com/gb/font/micon/micon-2/focusUED.eot?v=20180525");
+src: url("//crov.micstatic.com/gb/font/micon/micon-2/focusUED.eot?#iefix&v=20180525") format("embedded-opentype"), url("//crov.micstatic.com/gb/font/micon/micon-2/focusUED.woff?v=20180525") format("woff"), url("//crov.micstatic.com /gb/font/micon/micon-2/focusUED.ttf?v=20180525") format("truetype");
+font-weight: normal;
+font-style: normal;
+}
+
+.ob-icon {
+font-family: 'Mic-icon';
+font-weight: normal;
+font-style: normal;
+text-decoration: inherit;
+-webkit-font-smoothing: antialiased;
+display: inline-block;
+*display: inline;
+*zoom: 1;
+font-size: 16px;
+line-height: 1;
+vertical-align: middle;
+text-decoration: none !important;
+}
+```
+
+# 五、表单相关
+## 1. form以及自定义校验
+```
+<form class="m-form J-home-search-form" action="//www.crov.com/search" target="_top" method="GET" target="_top" name="searchForm" custom-validation-reporting="show-all-on-submit">
+    <input type="text" required class="input-text J-home-search-input" id="keyword2" maxlength="200" name="keyword" value="" placeholder="What are you looking for？" autocomplete="off" pattern="^[\x00-\xFF]+$">
+        <button type="submit" class="btn">Shop Now</button>
+        <div class="error-tip">
+            <span visible-when-invalid="valueMissing" validation-for="keyword2">Please input keyword(s).</span>
+            <span visible-when-invalid="patternMismatch" validation-for="keyword2">Please input the information in English only.</span>
+        </div>
+</form>
+```
+
+### 注意点：
+#### 1.1 form两种方式：GET POST
+
+GET:action可以还是action
+
+
+POST:action必须修改为action-xhr
+
+### 1.2 自定义校验`<form>`元素增加`custom-validation-reporting="show-all-on-submit"`
+
+`<span>元素增加visible-when-invalid="valueMissing" //必填`
+`<span>元素增加visible-when-invalid="patternMismatch" //只能输入中文`
+
+```
+<span visible-when-invalid="valueMissing" validation-for="keyword2">Please input keyword(s).</span>
+<span visible-when-invalid="patternMismatch" validation-for="keyword2">Please input the information in English only.</span>
+```
+
+### 1.3 select
+
+
+
+
+
+
+
+
+
+

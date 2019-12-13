@@ -115,7 +115,7 @@
 
 ## 6.4 `The mandatory tag 'meta name=viewport' is missing or incorrect. `
 
-解决方案：`<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+解决方案：`<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">`
 
 ## 6.5 `The attribute 'href' in tag 'link rel=stylesheet for fonts' is set to the invalid value 'base.css'.`
 
